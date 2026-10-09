@@ -15,6 +15,11 @@
         <i class="fa-solid fa-house"></i>
     </div>
 
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <!-- HEADER -->
     <header>
         <div class="navbar">
@@ -42,21 +47,25 @@
                 </li>
             </ul>
 
-            <!-- BUSCADOR -->
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="Buscar..." data-i18n-ph="search_ph" autocomplete="off">
-                </div>
-                <div class="search-suggestions" id="searchSuggestions"></div>
-            </div>
-
             <div class="nav-controls">
+                <!-- BUSCADOR MÓVIL Y DESKTOP -->
+                <div class="search-container" id="searchContainer">
+                    <button class="btn-search-toggle" onclick="toggleMobileSearch()" title="Buscar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon-desktop"></i>
+                        <input type="text" id="searchInput" oninput="onSearchInput()" placeholder="Buscar..." data-i18n-ph="search_ph" autocomplete="off">
+                    </div>
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+
+                <!-- SELECTOR DE IDIOMA SIMPLIFICADO (SIGLAS) -->
                 <select class="lang-select" id="langSelect" onchange="changeLanguage()">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="pt">Português</option>
-                    <option value="zh">中文 (Mandarin)</option>
+                    <option value="es">ES</option>
+                    <option value="en">EN</option>
+                    <option value="pt">PT</option>
+                    <option value="zh">ZH</option>
                 </select>
 
                 <button class="btn-theme" onclick="toggleTheme()">
@@ -94,6 +103,26 @@
 
         <!-- 1. INICIO -->
         <section id="inicio" class="section active">
+
+            <!-- BANNER PRINCIPAL DE INICIO (HERO CARD) -->
+            <div class="card" style="text-align: center; max-width: 850px; margin: 0 auto 2.5rem auto; padding: 2rem;">
+                <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase;" data-i18n="hero_tag">
+                    INGENIERÍA DE SOFTWARE
+                </span>
+                <h2 style="font-size: 1.8rem; margin: 0.8rem 0 1.2rem 0; color: var(--text-color);" data-i18n="hero_title">
+                    ¿Qué tipo de solución de Software necesita tu proyecto?
+                </h2>
+                
+                <img src="portada.png" alt="Análisis de Software INNOVASOFT" style="width: 100%; max-height: 380px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+                
+                <p style="color: var(--secondary); font-size: 1rem; line-height: 1.5; max-width: 700px; margin: 0 auto 1.2rem auto;" data-i18n="hero_desc">
+                    Definimos y estructuramos los requerimientos funcionales y de seguridad ideales para que tu plataforma web o móvil sea eficiente, escalable y 100% confiable.
+                </p>
+                <button class="btn-cta" onclick="showSection('encuesta')">
+                    <i class="fa-solid fa-list-check"></i> <span data-i18n="hero_btn">Cotizar Mis Requerimientos</span>
+                </button>
+            </div>
+
             <h2 data-i18n="features_title">Destacados</h2>
             <div class="grid">
                 <div class="card" id="req-analisis-agil">
@@ -120,21 +149,32 @@
             <p style="margin-top: 0.5rem;" data-i18n="brand_subtitle">Tecnología e Innovación</p>
             
             <div class="grid">
-                <div class="card about-card">
+                <div class="card about-card" id="card-mision">
+                    <button class="btn-speaker" onclick="speakCardText('card-mision')" title="Escuchar en voz alta">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
                     <img src="mision.png" alt="Misión INNOVASOFT" class="about-img" loading="lazy">
                     <h3 data-i18n="mission_title">Misión</h3>
                     <p data-i18n="mission_desc">Transformar las ideas complejas de nuestros clientes en requerimientos técnicos claros, eficientes y alcanzables para llegar al ojo público y objetivo.</p>
                 </div>
-                <div class="card about-card">
+                <div class="card about-card" id="card-vision">
+                    <button class="btn-speaker" onclick="speakCardText('card-vision')" title="Escuchar en voz alta">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
                     <img src="vision.png" alt="Visión INNOVASOFT" class="about-img" loading="lazy">
                     <h3 data-i18n="vision_title">Visión</h3>
-                    <p data-i18n="vision_desc">Consolidarnos como la empresa líder y referente regional en el desarrollo de software para el bienestar humano y la transformación organizacional, ofreciendo una red global de soporte con productos 100% seguros, confiables y de alto valor.
-                    <br>Puntos Clave:<br>
-                    <article><b>Innovación constante:</b> Creación de herramientas tecnológicas avanzadas y de vanguardia.</article>
-                    <article><b>Liderazgo regional:</b>Ser la opción número uno en el mercado de sistemas y tecnología.</article>
-                    <article><b>Calidad y confianza:</b> Garantizar estabilidad, seguridad y un servicio de excelencia que haga sentir a los usuarios en familia.</article></p>
+                    <p data-i18n="vision_desc">Consolidarnos como la empresa líder y referente regional en el desarrollo de software para el bienestar humano y la transformación organizacional, ofreciendo una red global de soporte con productos 100% seguros, confiables y de alto valor.</p>
+                    <p style="margin-top: 0.5rem;"><strong data-i18n="vision_pts_title">Puntos Clave:</strong></p>
+                    <div style="text-align: left; margin-top: 0.3rem;">
+                        <p style="margin-top: 0.3rem;"><strong data-i18n="vision_p1_lbl">Innovación constante:</strong> <span data-i18n="vision_p1_txt">Creación de herramientas tecnológicas avanzadas y de vanguardia.</span></p>
+                        <p style="margin-top: 0.3rem;"><strong data-i18n="vision_p2_lbl">Liderazgo regional:</strong> <span data-i18n="vision_p2_txt">Ser la opción número uno en el mercado de sistemas y tecnología.</span></p>
+                        <p style="margin-top: 0.3rem;"><strong data-i18n="vision_p3_lbl">Calidad y confianza:</strong> <span data-i18n="vision_p3_txt">Garantizar estabilidad, seguridad y un servicio de excelencia que haga sentir a los usuarios en familia.</span></p>
+                    </div>
                 </div>
-                <div class="card about-card">
+                <div class="card about-card" id="card-valores">
+                    <button class="btn-speaker" onclick="speakCardText('card-valores')" title="Escuchar en voz alta">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
                     <img src="valores.png" alt="Valores INNOVASOFT" class="about-img" loading="lazy">
                     <h3 data-i18n="values_title">Valores</h3>
                     <p data-i18n="values_desc">Innovación, Transparencia, Seguridad, Accesibilidad y Calidad.</p>
@@ -172,7 +212,7 @@
             <form id="reqForm" onsubmit="handleSurveySubmit(event)">
                 <div class="form-group">
                     <label for="surveyEmail" data-i18n="survey_label_email">Tu Correo Electrónico:</label>
-                    <input type="text" id="surveyEmail" required placeholder="usuario@gmail.com o usuario@hotmail.com">
+                    <input type="text" id="surveyEmail" required placeholder="usuario@gmail.com">
                 </div>
 
                 <div class="form-group">
@@ -209,51 +249,51 @@
         <!-- 5. PRESENTACIÓN DE REQUERIMIENTOS -->
         <section id="presentacion" class="section">
             <h2 data-i18n="pres_title">Presentación: Requerimientos de Software</h2>
-            <p style="margin-top: 0.5rem;">Fundamentos básicos de la Ingeniería de Requisitos</p>
+            <p style="margin-top: 0.5rem;" data-i18n="pres_subtitle">Fundamentos básicos de la Ingeniería de Requisitos</p>
 
             <div class="presentation-box" id="req-concepto">
-                <h3><i class="fa-solid fa-book-open"></i> ¿Qué es un Requerimiento?</h3>
-                <p>Un <strong>requerimiento de software</strong> es una condición o capacidad que debe poseer un sistema para satisfacer un contrato, una norma o la necesidad de un usuario. Describe qué debe hacer el software o bajo qué restricciones debe operar.</p>
+                <h3><i class="fa-solid fa-book-open"></i> <span data-i18n="pres_q1_title">¿Qué es un Requerimiento?</span></h3>
+                <p data-i18n="pres_q1_desc">Un <strong>requerimiento de software</strong> es una condición o capacidad que debe poseer un sistema para satisfacer un contrato, una norma o la necesidad de un usuario. Describe qué debe hacer el software o bajo qué restricciones debe operar.</p>
             </div>
 
             <div class="presentation-box" id="req-elementos">
-                <h3><i class="fa-solid fa-layer-group"></i> Elementos de un Requerimiento</h3>
+                <h3><i class="fa-solid fa-layer-group"></i> <span data-i18n="pres_elem_title">Elementos de un Requerimiento</span></h3>
                 <ul class="elements-list">
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <div><strong>Entrada (Inputs):</strong> Datos que recibe el sistema.</div>
+                        <div><strong data-i18n="elem_in_label">Entrada (Inputs):</strong> <span data-i18n="elem_in_desc">Datos que recibe el sistema.</span></div>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <div><strong>Proceso:</strong> La lógica o regla de negocio aplicada.</div>
+                        <div><strong data-i18n="elem_proc_label">Proceso:</strong> <span data-i18n="elem_proc_desc">La lógica o regla de negocio aplicada.</span></div>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <div><strong>Salida (Outputs):</strong> El resultado o respuesta generada por el software.</div>
+                        <div><strong data-i18n="elem_out_label">Salida (Outputs):</strong> <span data-i18n="elem_out_desc">El resultado o respuesta generada por el software.</span></div>
                     </li>
                     <li>
                         <i class="fa-solid fa-circle-check"></i>
-                        <div><strong>Restricciones:</strong> Límites tecnológicos, legales o de diseño.</div>
+                        <div><strong data-i18n="elem_rest_label">Restricciones:</strong> <span data-i18n="elem_rest_desc">Límites tecnológicos, legales o de diseño.</span></div>
                     </li>
                 </ul>
             </div>
 
-            <h3 style="margin-top: 2rem;">Características de un Requerimiento</h3>
+            <h3 style="margin-top: 2rem;" data-i18n="pres_char_title">Características de un Requerimiento</h3>
             <div class="grid">
                 <div class="card" id="req-univoco">
                     <i class="fa-solid fa-bullseye fa-2x" style="color: var(--primary);"></i>
-                    <h3 style="margin-top: 0.5rem;">Unívoco y Claro</h3>
-                    <p>Posee únicamente una interpretación técnica posible.</p>
+                    <h3 style="margin-top: 0.5rem;" data-i18n="char_1_title">Unívoco y Claro</h3>
+                    <p data-i18n="char_1_desc">Posee únicamente una interpretación técnica posible.</p>
                 </div>
                 <div class="card" id="req-verificable">
                     <i class="fa-solid fa-vial-circle-check fa-2x" style="color: var(--primary);"></i>
-                    <h3 style="margin-top: 0.5rem;">Verificable</h3>
-                    <p>Es posible diseñar una prueba para corroborar su cumplimiento.</p>
+                    <h3 style="margin-top: 0.5rem;" data-i18n="char_2_title">Verificable</h3>
+                    <p data-i18n="char_2_desc">Es posible diseñar una prueba para corroborar su cumplimiento.</p>
                 </div>
                 <div class="card" id="req-necesario">
                     <i class="fa-solid fa-star fa-2x" style="color: var(--primary);"></i>
-                    <h3 style="margin-top: 0.5rem;">Necesario</h3>
-                    <p>Cubre una necesidad real del negocio o del usuario.</p>
+                    <h3 style="margin-top: 0.5rem;" data-i18n="char_3_title">Necesario</h3>
+                    <p data-i18n="char_3_desc">Cubre una necesidad real del negocio o del usuario.</p>
                 </div>
             </div>
 
@@ -274,22 +314,22 @@
                 </div>
             </div>
 
-            <h3 style="margin-top: 2rem;">Ejemplos de Requerimientos</h3>
+            <h3 style="margin-top: 2rem;" data-i18n="ex_title">Ejemplos de Requerimientos</h3>
             <div class="grid">
                 <div class="card" id="req-funcional">
-                    <h3><i class="fa-solid fa-user-lock"></i> Ejemplo 1: Requerimiento Funcional</h3>
-                    <p><strong>Descripción:</strong> "El sistema debe permitir a los usuarios autenticarse ingresando su correo electrónico y contraseña, enviando un código OTP de validación de 6 dígitos al correo registrado antes de conceder acceso."</p>
+                    <h3><i class="fa-solid fa-user-lock"></i> <span data-i18n="ex1_title">Ejemplo 1: Requerimiento Funcional</span></h3>
+                    <p><strong data-i18n="desc_label">Descripción:</strong> <span data-i18n="ex1_desc">"El sistema debe permitir a los usuarios autenticarse ingresando su correo electrónico y contraseña, enviando un código OTP de validación de 6 dígitos al correo registrado antes de conceder acceso."</span></p>
                 </div>
                 <div class="card" id="req-nofuncional">
-                    <h3><i class="fa-solid fa-gauge-high"></i> Ejemplo 2: Requerimiento No Funcional</h3>
-                    <p><strong>Descripción:</strong> "La plataforma debe procesar y desplegar el resultado de una búsqueda en un tiempo de respuesta máximo de 2 segundos cuando haya hasta 1,000 usuarios concurrentes."</p>
+                    <h3><i class="fa-solid fa-gauge-high"></i> <span data-i18n="ex2_title">Ejemplo 2: Requerimiento No Funcional</span></h3>
+                    <p><strong data-i18n="desc_label">Descripción:</strong> <span data-i18n="ex2_desc">"La plataforma debe procesar y desplegar el resultado de una búsqueda en un tiempo de respuesta máximo de 2 segundos cuando haya hasta 1,000 usuarios concurrentes."</span></p>
                 </div>
             </div>
 
             <div class="presentation-box" style="margin-top: 2rem; text-align: center;">
-                <h3><i class="fa-solid fa-cart-shopping"></i> ¿Listo para adquirir nuestros servicios?</h3>
-                <p style="margin-bottom: 1rem;">Crea tu cuenta rápidamente para empezar a cotizar y comprar tus paquetes de requerimientos.</p>
-                <button class="btn-cta" onclick="showAuthMode('register')">Registrarme para Comprar</button>
+                <h3><i class="fa-solid fa-cart-shopping"></i> <span data-i18n="ready_buy_title">¿Listo para adquirir nuestros servicios?</span></h3>
+                <p style="margin-bottom: 1rem;" data-i18n="ready_buy_desc">Crea tu cuenta rápidamente para empezar a cotizar y comprar tus paquetes de requerimientos.</p>
+                <button class="btn-cta" onclick="showAuthMode('register')" data-i18n="btn_register_buy">Registrarme para Comprar</button>
             </div>
         </section>
 
@@ -301,12 +341,17 @@
                     <h2>Iniciar Sesión</h2>
                     <form onsubmit="handleLogin(event)" style="margin-top: 1rem;">
                         <div class="form-group">
-                            <label>Correo Electrónico</label>
-                            <input type="text" id="loginEmail" required placeholder="usuario@gmail.com o usuario@hotmail.com">
+                            <label>Correo Electrónico (Gmail, Hotmail, Outlook, Yahoo)</label>
+                            <input type="text" id="loginEmail" required placeholder="usuario@gmail.com">
                         </div>
                         <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" id="loginPass" required>
+                            <label>Contraseña (Mínimo 8 caracteres)</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="password" id="loginPass" minlength="8" required placeholder="••••••••" style="flex: 1;">
+                                <button type="button" class="btn-cta btn-secondary" onclick="togglePasswordVisibility('loginPass', 'eyeIconLogin')" title="Mostrar / Ocultar Contraseña" style="margin: 0; padding: 0.5rem 0.8rem; font-size: 0.85rem; white-space: nowrap;">
+                                    <i class="fa-solid fa-eye" id="eyeIconLogin"></i>
+                                </button>
+                            </div>
                         </div>
                         <button type="submit" class="btn-cta" style="width: 100%;">Ingresar y Comprar</button>
                     </form>
@@ -321,12 +366,20 @@
                             <input type="text" id="regName" required placeholder="Juan Pérez">
                         </div>
                         <div class="form-group">
-                            <label>Correo Electrónico</label>
-                            <input type="text" id="regEmail" required placeholder="usuario@gmail.com o usuario@hotmail.com">
+                            <label>Correo Electrónico (Gmail, Hotmail, Outlook, Yahoo)</label>
+                            <input type="text" id="regEmail" required placeholder="usuario@gmail.com">
                         </div>
                         <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" id="regPass" required>
+                            <label>Contraseña (Mínimo 8 caracteres)</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="password" id="regPass" minlength="8" required placeholder="••••••••" style="flex: 1;">
+                                <button type="button" class="btn-cta btn-secondary" onclick="togglePasswordVisibility('regPass', 'eyeIconReg')" title="Mostrar / Ocultar Contraseña" style="margin: 0; padding: 0.5rem 0.8rem; font-size: 0.85rem; white-space: nowrap;">
+                                    <i class="fa-solid fa-eye" id="eyeIconReg"></i>
+                                </button>
+                                <button type="button" class="btn-cta btn-secondary" onclick="generateSecurePassword('regPass')" title="Generar Contraseña Segura" style="margin: 0; padding: 0.5rem 0.8rem; font-size: 0.85rem; white-space: nowrap;">
+                                    <i class="fa-solid fa-key"></i> Generar
+                                </button>
+                            </div>
                         </div>
                         <button type="submit" class="btn-cta" style="width: 100%;">Registrarme para Comprar</button>
                     </form>
@@ -400,6 +453,16 @@
 
     </main>
 
+    <!-- BANNER DE COOKIES -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <p><i class="fa-solid fa-cookie-bite" style="color: #f59e0b; margin-right: 8px;"></i> Utilizamos cookies técnicas para mejorar la experiencia de usuario, gestionar la sesión de autenticación y optimizar el análisis de requerimientos según nuestra Política de Privacidad.</p>
+            <div class="cookie-buttons">
+                <button class="btn-cta" onclick="acceptCookies()">Aceptar Cookies</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
@@ -407,9 +470,9 @@
                 <h4>INNOVASOFT</h4>
                 <p data-i18n="brand_subtitle">Tecnología e Innovación</p>
                 <div class="social-icons" style="margin-top: 1rem;">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.x.com" target="_blank" rel="noopener noreferrer" title="Twitter / X"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
 
@@ -424,8 +487,8 @@
 
             <div>
                 <h4 data-i18n="footer_contact">Contacto</h4>
-                <p><i class="fa-solid fa-envelope"></i> contacto@innovasoft.com</p>
-                <p><i class="fa-solid fa-phone"></i> +503 2200-0000</p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:innovasoft@gmail.com" style="color: inherit; text-decoration: none;">innovasoft@gmail.com</a></p>
+                <p><i class="fa-solid fa-phone"></i> +503 6303-8407</p>
                 <p><i class="fa-solid fa-location-dot"></i> San Martín, El Salvador</p>
             </div>
         </div>
@@ -434,6 +497,6 @@
             <p data-i18n="footer_rights">&copy; 2026 INNOVASOFT. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="script.js" ></script>
+    <script src="script.js"></script>
 </body>
 </html>
